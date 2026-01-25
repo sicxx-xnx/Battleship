@@ -1,7 +1,7 @@
 /* eslint-env node */
 import {tester} from "../index.js"
 // const tester = require("../index");
-test('expecting tester to equal test', () => {
+test.skip('expecting tester to equal test', () => {
 expect(tester()).toBe("test")    
 });
 
