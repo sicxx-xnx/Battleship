@@ -5,4 +5,5 @@ if (isNaN(length)) {
 this.length = length
 this.hitAmount = 0
 this.sunk = false
+this.position = Math.random() > 0.49 ? "horizontial":"verticle"
 }
