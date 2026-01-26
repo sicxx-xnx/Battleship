@@ -16,8 +16,7 @@ this.board = [
 ["","","","","","","","",""],
 ["","","","","","","","",""],
 ["","","","","","","","",""] 
-]
-this.player = null   
+] 
 this.ships = [
 new ship(1),
 new ship(1),
@@ -56,14 +55,67 @@ let isPlaced = false
     }
     }    
 }
-})    
+})   
+// check to ensure 19 peices are in play
+let count = 0
+ for (const subArr of this.board) {
+        for (const item of subArr) {
+            if (item) { 
+                count++;
+            }
+        }
+    }
+// rerun from recurision if it is not.
+if (count !== 19) {
+this.board =  [
+["","","","","","","","",""],
+["","","","","","","","",""],   
+["","","","","","","","",""],
+["","","","","","","","",""],   
+["","","","","","","","",""],
+["","","","","","","","",""],   
+["","","","","","","","",""],
+["","","","","","","","",""],
+["","","","","","","","",""] 
+];
+this.placeShips()   
+}
+}
+this.stratgy = {
+board :  [
+["","","","","","","","",""],
+["","","","","","","","",""],   
+["","","","","","","","",""],
+["","","","","","","","",""],   
+["","","","","","","","",""],
+["","","","","","","","",""],   
+["","","","","","","","",""],
+["","","","","","","","",""],
+["","","","","","","","",""] 
+],
+missCount: [],
+hitCount: []    
 }
 this.receiveAttack = function(y,x){
 if (this.board[y][x]) {
-hit(this.board[y][x])   
+hit(this.board[y][x])
+this.stratgy.board[y][x] = "X";
+this.stratgy.hitCount.push([x,y])   
 } else {
+this.stratgy.board[y][x] = 'O'
+this.stratgy.missCount.push([x,y])    
 return "thats a miss"    
 }
 
 }
+}
+this.gameOver = function (){
+for (let index = 0; index < this.ship.length; index++) {
+let outcome;    
+if (this.ships[index].sunk) {
+outcome = true    
+} else {outcome = false}
+    
+}
+return outcome
 }
