@@ -44,7 +44,7 @@ expect(verticleCheck(game2.board,0,0,3)).toBe(false)
 })
 
 
-test("expect gameboard to hold 8 objects",() => {
+test("expect gameboard to hold 19 objects",() => {
 const game2 = new gameboard()
 game2.placeShips()
     let count = 0;
@@ -57,5 +57,5 @@ game2.placeShips()
     }
 
     count;
-    expect(count).toBe(9)      
+    expect(count).toBe(19)      
 })
