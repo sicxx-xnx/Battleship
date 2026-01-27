@@ -60,7 +60,7 @@ justify-content: center;
 }
 
 .title h1{
-font-size: 70px;    
+font-size: clamp(45px, 12vw, 19vw);   
 color: white;
 font-family: "Bitcount Grid Double", system-ui;
   font-optical-sizing: auto;
@@ -71,4 +71,77 @@ font-family: "Bitcount Grid Double", system-ui;
     "CRSV" 0.5,
     "ELSH" 0,
     "ELXP" 0;
+}
+
+.player-1-holder{
+display: flex;    
+flex-direction: column;
+height: 100%;
+justify-content: space-around;
+margin-top: -20%;
+align-items: center;
+}
+
+.input-container{
+width: 20vw;    
+position:relative;
+background-color: rgb(64, 63, 63);
+height: 8%;
+}
+.player-1-name{
+background-color: transparent;    
+width: 100%;
+height: 100%;
+border: none;
+border-bottom: 4px solid white ;
+color: white;
+font-size: clamp(8px, 5vw,20px);
+z-index: 5;
+}
+
+.player-1-title,
+.input-label{
+color: white;    
+}
+
+.player-1-title{
+justify-self: flex-start;  
+font-size: clamp(14px, 8vw, 90px);
+}
+
+.input-label{
+position: absolute;    
+left: 0;
+top: 0;
+font-size: 25px;
+margin-left: 0.2rem;
+pointer-events: none;
+}
+.player-1-name:focus + .input-label{
+top: -1.9rem;    
+left: 0.2rem;
+}
+.player-1-name:not(:placeholder-shown) + .input-label{
+top: -1.9rem;    
+left: 0.2rem;
+}
+
+.player-1-name:focus{
+outline: none;  
+
+}
+
+.name-input-label{
+position: absolute;
+width: 67%;
+height: 100%;  
+top: -0.3rem;  
+left: 125px;
+pointer-events: none;
+cursor: text;
+}
+.player-1-name:focus + .input-label + .name-input-label,
+.player-1-name:not(:placeholder-shown) + .input-label + .name-input-label
+{
+border-top: 2px solid white;    
 }

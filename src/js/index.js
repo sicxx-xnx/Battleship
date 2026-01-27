@@ -1,5 +1,6 @@
 import "../css/style.css"
+import { startGame } from "./dom/currentdomelements"
+import { startplayer1 } from "./dom/dommethods"
 
-export const tester = function (){return 'test'}
-// module.exports = tester
+startGame.addEventListener("click",startplayer1)
 
