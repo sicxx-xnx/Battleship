@@ -14,7 +14,7 @@ outcome = false
 
 export function verticleCheck(array,y,x,length){
 let outcome = false;
-for (let index = Math.max(0,y - 1) || y; index <= y + length ; index++) {
+for (let index = y ; index <= y + length ; index++) {
     if (y + length > array.length) return false    
     if(array[index][x] === "") {
      outcome = true   

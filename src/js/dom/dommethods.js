@@ -1,6 +1,6 @@
-import { currentplayer, playerone, setCurrentPlayer, setPlayer1, setPlayer2,  } from "../gamelogic/Savedinfo";
+import { currentplayer, opponent, playerone, playertwo, setCurrentPlayer, setOpponent, setPlayer1, setPlayer2,  } from "../gamelogic/Savedinfo";
 import { player } from "../player/playercon";
-import { background, currentplayername, currentships, gameboards, gameinitholder, startGame } from "./currentdomelements";
+import { background, currentplayername, currentships, gameboards, gameinitholder, startGame, stratboard } from "./currentdomelements";
 import { player1border, player1holderel, player1inputdiv, player1nameinputel, player1namelabel, player1title, player2border, player2holderel, player2humanorpccheckmarkholder, player2inputdiv, player2nameinputel, player2namelabel, player2pccheckbox, player2pccheckboxlabel, player2title, spanel, startGameButton, submitPlayerButton } from "./newdomelements";
 
 export function startplayer1(){
@@ -51,6 +51,7 @@ player2.gameboard.placeShips()
 setPlayer2(player2)  
 setupGameboards()
 populateships()
+populatestratboard()
 }    else {
 if (player2nameinputel.value.trim() === "") {
 alert("error must enter in a name")    
@@ -60,6 +61,7 @@ player2.gameboard.placeShips()
 setPlayer2(player2) 
 setupGameboards() 
 populateships()
+populatestratboard()
 }    
 }
 
@@ -68,11 +70,12 @@ populateships()
 
 function setupGameboards(){
 background.replaceChild(gameboards,gameinitholder)
-setCurrentPlayer(playerone)   
+setCurrentPlayer(playerone)  
+setOpponent(playertwo) 
 currentplayername.innerText = currentplayer.name
 }
 
-function populateships(){
+export function populateships(){
 for (let i = 0; i < currentplayer.gameboard.board.length; i++) {
 const maprow = document.createElement("div")
 maprow.classList = "maprow"
@@ -80,15 +83,33 @@ maprow.classList = "maprow"
     for (let index = 0; index < currentplayer.gameboard.board[i].length; index++) {
         const mapcell = document.createElement("div")
         if (currentplayer.gameboard.board[i][index]) {
-         mapcell.classList = "shippresent"   
+         mapcell.classList = "shippresent"  
         } else {
          mapcell.classList = "shipmissing"   
         }
         if (currentplayer.gameboard.stratgy.board[i][index]) {
-         mapcell.innerText =  currentplayer.gameboard.stratgy.board[y][x]  
+         mapcell.innerText =  currentplayer.gameboard.stratgy.board[i][index]  
         }
         maprow.appendChild(mapcell)
     }   
 currentships.appendChild(maprow)     
 }    
+}
+
+export function populatestratboard(){
+for (let i = 0; i < opponent.gameboard.stratgy.board.length; i++) {
+const maprow = document.createElement("div")
+maprow.classList = "maprow"    
+    for (let index = 0; index < opponent.gameboard.stratgy.board[i].length; index++) {
+        const mapcell = document.createElement("div")
+        if (opponent.gameboard.stratgy.board[i][index]) {
+         mapcell.innerText =  opponent.gameboard.stratgy.board[y][x]  
+        }
+        if (opponent.gameboard.board[i][index].sunk) {
+        mapcell.classList.add("sunk")    
+        }
+        maprow.appendChild(mapcell)
+    }   
+stratboard.appendChild(maprow)
+}
 }
