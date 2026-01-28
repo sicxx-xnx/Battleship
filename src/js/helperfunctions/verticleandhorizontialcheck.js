@@ -1,6 +1,6 @@
 export function horizontialCheck(array,x,length){
 let outcome = false    
-for (let index = x; index < x + length; index++) {
+for (let index = Math.max(0,x-1); index <= x + length; index++) {
 if (x + length > array.length) return false    
 if (array[index] === "") {
 outcome = true    
@@ -14,7 +14,7 @@ outcome = false
 
 export function verticleCheck(array,y,x,length){
 let outcome = false;
-for (let index = y; index < y + length ; index++) {
+for (let index = Math.max(0,y - 1) || y; index <= y + length ; index++) {
     if (y + length > array.length) return false    
     if(array[index][x] === "") {
      outcome = true   
@@ -24,3 +24,4 @@ for (let index = y; index < y + length ; index++) {
 }    
 return outcome
 }
+
