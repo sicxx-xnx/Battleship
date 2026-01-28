@@ -309,6 +309,18 @@ display: grid;
 grid-template-columns: repeat(9,1fr);  
 }
 
+
+
+.cell{
+border: black 1px solid;  
+font-size: clamp(15px, 8vh ,58px);
+text-align: center;
+color: green;
+background-color: blue
+}
 .sunk {
 border: red 1px solid;  
+font-size: clamp(15px, 8vh ,58px);
+text-align: center;
+color: red;
 }

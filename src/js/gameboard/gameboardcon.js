@@ -1,5 +1,8 @@
+import { gameloop } from "../gamelogic/placeships"
+import { opponent } from "../gamelogic/Savedinfo"
 import { horizontialCheck, verticleCheck } from "../helperfunctions/verticleandhorizontialcheck"
 import { hit } from "../hits/hitmethod"
+import { isSunkCheck } from "../hits/sunkmethod"
 import { ship } from "../shipgeneration"
 
 
@@ -100,7 +103,8 @@ this.receiveAttack = function(y,x){
 if (this.board[y][x]) {
 hit(this.board[y][x])
 this.stratgy.board[y][x] = "X";
-this.stratgy.hitCount.push([x,y])   
+this.stratgy.hitCount.push([x,y]) 
+isSunkCheck(this.board[y][x])  
 } else {
 this.stratgy.board[y][x] = 'O'
 this.stratgy.missCount.push([x,y])    
@@ -117,5 +121,11 @@ outcome = true
     
 }
 return outcome
+}
+this.sendattack = function(event){
+const attackcell = event.target
+opponent.gameboard.receiveAttack(attackcell.dataset.y,attackcell.dataset.x)  
+console.log(attackcell)  
+gameloop()
 }
 }

@@ -76,6 +76,7 @@ currentplayername.innerText = currentplayer.name
 }
 
 export function populateships(){
+currentships.innerHTML = ""    
 for (let i = 0; i < currentplayer.gameboard.board.length; i++) {
 const maprow = document.createElement("div")
 maprow.classList = "maprow"
@@ -97,18 +98,23 @@ currentships.appendChild(maprow)
 }
 
 export function populatestratboard(){
+stratboard.innerHTML = ""    
 for (let i = 0; i < opponent.gameboard.stratgy.board.length; i++) {
 const maprow = document.createElement("div")
 maprow.classList = "maprow"    
     for (let index = 0; index < opponent.gameboard.stratgy.board[i].length; index++) {
         const mapcell = document.createElement("div")
+        mapcell.classList.add("cell")
+        mapcell.dataset.y = i;
+        mapcell.dataset.x = index
         if (opponent.gameboard.stratgy.board[i][index]) {
-         mapcell.innerText =  opponent.gameboard.stratgy.board[y][x]  
+         mapcell.innerText =  opponent.gameboard.stratgy.board[i][index]  
         }
         if (opponent.gameboard.board[i][index].sunk) {
         mapcell.classList.add("sunk")    
         }
         maprow.appendChild(mapcell)
+        mapcell.addEventListener("click",currentplayer.gameboard.sendattack)
     }   
 stratboard.appendChild(maprow)
 }
