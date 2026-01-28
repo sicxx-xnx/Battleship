@@ -2,6 +2,7 @@ export let playerone;
 export let playertwo;
 export let currentplayer;
 export let opponent;
+export let holder;
 
 
 export function setPlayer1(x){playerone = x
@@ -17,4 +18,7 @@ return currentplayer
 }
 export function setOpponent(x){
 opponent = x
+}
+export function setHolder(x){
+holder = x
 }
