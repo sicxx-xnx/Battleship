@@ -6,4 +6,11 @@ const gameinitholder = document.querySelector(".holder")
 
 
 const startGame = document.querySelector(".start-game")
-export {background,siteTitle,gameinitholder,startGame}
+
+const gameboards = document.querySelector(".gameboards")
+
+const currentships = document.querySelector(".ships")
+
+const currentplayername = document.querySelector(".turn h2")
+
+export {background,siteTitle,gameinitholder,startGame,gameboards, currentplayername, currentships}

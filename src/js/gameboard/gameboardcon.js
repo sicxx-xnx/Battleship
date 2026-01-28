@@ -108,14 +108,14 @@ return "thats a miss"
 }
 
 }
-}
 this.gameOver = function (){
 for (let index = 0; index < this.ship.length; index++) {
-let outcome;    
+let outcome  
 if (this.ships[index].sunk) {
 outcome = true    
 } else {outcome = false}
     
 }
 return outcome
+}
 }
