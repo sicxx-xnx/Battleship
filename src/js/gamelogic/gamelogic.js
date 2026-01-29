@@ -1,12 +1,14 @@
 import { currentplayername } from "../dom/currentdomelements"
 import { populateships, populatestratboard } from "../dom/dommethods"
+import { addRestart } from "../dom/restart"
 import { currentplayer, holder, opponent, setCurrentPlayer, setHolder, setOpponent } from "./Savedinfo"
 
 export const gameloop = function(){    
 populateships()
 populatestratboard()
 if (opponent.gameboard.gameOver()) {
-alert(`${currentplayer.name} wins!`)    
+alert(`${currentplayer.name} wins!`) 
+addRestart()   
 return
 }
 setTimeout(() => {

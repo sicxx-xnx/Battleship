@@ -70,6 +70,14 @@ const startGameButton = document.createElement("div")
 startGameButton.className = "submit-player"
 startGameButton.innerText = "Start Game"
 
+
+const resetDiv = document.createElement("div")
+resetDiv.classList.add("reset-holder")
+
+const resetButton = document.createElement('div')
+resetButton.classList.add('reset')
+resetButton.innerText = 'Restart'
+
 export {player1border,player1holderel,player1title,player1inputdiv,player1nameinputel,player1namelabel,submitPlayerButton,player2holderel,player2title,player2inputdiv,player2nameinputel,player2namelabel,player2border,
-player2humanorpccheckmarkholder,player2pccheckboxlabel,player2pccheckbox,spanel,startGameButton    
+player2humanorpccheckmarkholder,player2pccheckboxlabel,player2pccheckbox,spanel,startGameButton,resetDiv,resetButton    
 }

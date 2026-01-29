@@ -124,9 +124,15 @@ return outcome
 }
 this.sendattack = function(event){
 if (currentplayer.pc) {
+let attackRecived = false
+while (!attackRecived) {
 const y = Math.floor(Math.random() * 8)
 const x = Math.floor(Math.random() * 8)  
-opponent.gameboard.receiveAttack(y,x)
+if (!opponent.gameboard.stratgy.board[y][x]) {
+opponent.gameboard.receiveAttack(y,x)    
+attackRecived = true
+}    
+}   
 gameloop()    
 } else     
 {const attackcell = event.target
