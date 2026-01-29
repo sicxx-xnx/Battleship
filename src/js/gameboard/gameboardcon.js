@@ -1,5 +1,5 @@
-import { gameloop } from "../gamelogic/placeships"
-import { opponent } from "../gamelogic/Savedinfo"
+import { gameloop } from "../gamelogic/gamelogic"
+import { currentplayer, opponent } from "../gamelogic/Savedinfo"
 import { horizontialCheck, verticleCheck } from "../helperfunctions/verticleandhorizontialcheck"
 import { hit } from "../hits/hitmethod"
 import { isSunkCheck } from "../hits/sunkmethod"
@@ -113,19 +113,24 @@ return "thats a miss"
 
 }
 this.gameOver = function (){
-for (let index = 0; index < this.ship.length; index++) {
-let outcome  
+let outcome;      
+for (let index = 0; index < this.ships.length; index++) {  
 if (this.ships[index].sunk) {
 outcome = true    
-} else {outcome = false}
+} else {return false}
     
 }
 return outcome
 }
 this.sendattack = function(event){
-const attackcell = event.target
+if (currentplayer.pc) {
+const y = Math.floor(Math.random() * 8)
+const x = Math.floor(Math.random() * 8)  
+opponent.gameboard.receiveAttack(y,x)
+gameloop()    
+} else     
+{const attackcell = event.target
 opponent.gameboard.receiveAttack(attackcell.dataset.y,attackcell.dataset.x)  
-console.log(attackcell)  
-gameloop()
+gameloop()}
 }
 }

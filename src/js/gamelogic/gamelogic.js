@@ -5,10 +5,17 @@ import { currentplayer, holder, opponent, setCurrentPlayer, setHolder, setOppone
 export const gameloop = function(){    
 populateships()
 populatestratboard()
+if (opponent.gameboard.gameOver()) {
+alert(`${currentplayer.name} wins!`)    
+return
+}
 setTimeout(() => {
 switchturn()
 populateships()
-populatestratboard()     
+populatestratboard()  
+if (currentplayer.pc) {
+currentplayer.gameboard.sendattack()    
+}   
 }, 2000);
 
 
