@@ -195,6 +195,18 @@ color: rgba(255, 255, 255, 0.158);
 .checkbox-holder{
 width: clamp(40px, 5vw, 70px);  
 height: clamp(40px, 5vw, 70px);
+display: flex;
+width: 30%;
+gap: 10%;
+align-items: center;
+}
+.checkbox-holder::after{
+content: "Player";
+color: white;  
+}
+.checkbox-holder::before{
+  content: "PC";
+  color: white;
 }
 
 .switch {
