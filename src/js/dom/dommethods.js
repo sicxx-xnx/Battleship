@@ -1,4 +1,4 @@
-import { currentplayer, opponent, playerone, playertwo, setCurrentPlayer, setOpponent, setPlayer1, setPlayer2,  } from "../gamelogic/Savedinfo";
+import { currentplayer, firelock, opponent, playerone, playertwo, setCurrentPlayer, setOpponent, setPlayer1, setPlayer2,  } from "../gamelogic/Savedinfo";
 import { player } from "../player/playercon";
 import { background, currentplayername, currentships, gameboards, gameinitholder, startGame, stratboard } from "./currentdomelements";
 import { player1border, player1holderel, player1inputdiv, player1nameinputel, player1namelabel, player1title, player2border, player2holderel, player2humanorpccheckmarkholder, player2inputdiv, player2nameinputel, player2namelabel, player2pccheckbox, player2pccheckboxlabel, player2title, spanel, startGameButton, submitPlayerButton } from "./newdomelements";
@@ -98,7 +98,14 @@ currentships.appendChild(maprow)
 }
 
 export function populatestratboard(){
-stratboard.innerHTML = ""    
+stratboard.innerHTML = ""  
+stratboard.addEventListener("click",(event) => {
+if (firelock) {
+return     
+}
+currentplayer.gameboard.sendattack(event)    
+}
+)  
 for (let i = 0; i < opponent.gameboard.stratgy.board.length; i++) {
 const maprow = document.createElement("div")
 maprow.classList = "maprow"    
@@ -114,8 +121,9 @@ maprow.classList = "maprow"
         mapcell.classList.add("sunk")    
         }
         maprow.appendChild(mapcell)
-        mapcell.addEventListener("click",currentplayer.gameboard.sendattack)
     }   
 stratboard.appendChild(maprow)
 }
 }
+
+

@@ -1,7 +1,7 @@
 import { currentplayername } from "../dom/currentdomelements"
 import { populateships, populatestratboard } from "../dom/dommethods"
 import { addRestart } from "../dom/restart"
-import { currentplayer, holder, opponent, setCurrentPlayer, setHolder, setOpponent } from "./Savedinfo"
+import { currentplayer, firelock, firelockfalse, firelocktrue, holder, opponent, setCurrentPlayer, setHolder, setOpponent } from "./Savedinfo"
 
 export const gameloop = function(){    
 populateships()
@@ -11,13 +11,15 @@ alert(`${currentplayer.name} wins!`)
 addRestart()   
 return
 }
+firelocktrue()
 setTimeout(() => {
 switchturn()
 populateships()
 populatestratboard()  
 if (currentplayer.pc) {
 currentplayer.gameboard.sendattack()    
-}   
+}  
+firelockfalse()
 }, 2000);
 
 

@@ -3,6 +3,7 @@ export let playertwo;
 export let currentplayer;
 export let opponent;
 export let holder;
+export let firelock;
 
 
 export function setPlayer1(x){playerone = x
@@ -21,4 +22,11 @@ opponent = x
 }
 export function setHolder(x){
 holder = x
+}
+
+export function firelocktrue(){
+firelock = true
+}
+export function firelockfalse(){
+firelock = false    
 }
