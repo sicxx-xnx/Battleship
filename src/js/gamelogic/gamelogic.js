@@ -7,9 +7,8 @@ export const gameloop = function(){
 populateships()
 populatestratboard()
 if (opponent.gameboard.gameOver()) {
-alert(`${currentplayer.name} wins!`) 
-addRestart()   
-return
+// alert(`${currentplayer.name} wins!`) 
+return addRestart()   
 }
 firelocktrue()
 setTimeout(() => {
@@ -20,7 +19,7 @@ if (currentplayer.pc) {
 currentplayer.gameboard.sendattack()    
 }  
 firelockfalse()
-}, 2000);
+}, 1000);
 
 
 }

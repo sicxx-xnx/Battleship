@@ -78,6 +78,8 @@ const resetButton = document.createElement('div')
 resetButton.classList.add('reset')
 resetButton.innerText = 'Restart'
 
+const winnerText = document.createElement("h2")
+
 export {player1border,player1holderel,player1title,player1inputdiv,player1nameinputel,player1namelabel,submitPlayerButton,player2holderel,player2title,player2inputdiv,player2nameinputel,player2namelabel,player2border,
-player2humanorpccheckmarkholder,player2pccheckboxlabel,player2pccheckbox,spanel,startGameButton,resetDiv,resetButton    
+player2humanorpccheckmarkholder,player2pccheckboxlabel,player2pccheckbox,spanel,startGameButton,resetDiv,resetButton,winnerText    
 }
