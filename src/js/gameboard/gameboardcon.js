@@ -143,10 +143,14 @@ if (this.board[y][x]) {
 hit(this.board[y][x])
 this.stratgy.board[y][x] = "X";
 this.stratgy.hitCount.push([x,y]) 
-isSunkCheck(this.board[y][x])  
+this.lasthit.sunk = isSunkCheck(this.board[y][x]) 
+this.lasthit.result = "hit" 
+this.lasthit.cords = [x,y]
 } else {
 this.stratgy.board[y][x] = 'O'
-this.stratgy.missCount.push([x,y])    
+this.stratgy.missCount.push([x,y]) 
+this.lasthit.result = "miss" 
+this.lasthit.cords = [x,y]   
 return "thats a miss"    
 }
 
@@ -163,19 +167,52 @@ return outcome
 }
 this.sendattack = function(event){
 if (currentplayer.pc) {
-let attackRecived = false
-while (!attackRecived) {
-const y = Math.floor(Math.random() * 8)
-const x = Math.floor(Math.random() * 8)  
-if (!opponent.gameboard.stratgy.board[y][x]) {
-opponent.gameboard.receiveAttack(y,x)    
-attackRecived = true
-}    
-}   
-gameloop()    
-} else     
-{const attackcell = event.target
-opponent.gameboard.receiveAttack(attackcell.dataset.y,attackcell.dataset.x)  
-gameloop()}
+    let attackRecived = false;
+    let x;
+    let y;
+
+    while (!attackRecived) {
+
+        if (opponent.gameboard.lasthit.result === "hit") {
+            y = opponent.gameboard.lasthit.cords[1];
+            x = opponent.gameboard.lasthit.cords[0];
+
+            if (Math.random() > .49) {
+                if (y + 1 < opponent.gameboard.board.length) {
+                    y++;
+                } else {
+                    y = Math.floor(Math.random() * 8);
+                }
+            } else {
+                if (x + 1 < opponent.gameboard.board[0].length) {
+                    x++;
+                } else {
+                    x = Math.floor(Math.random() * 8);
+                }
+            }
+
+        } else {
+            x = Math.floor(Math.random() * 8);
+            y = Math.floor(Math.random() * 8);
+        }
+
+        if (!opponent.gameboard.stratgy.board[y][x]) {
+            opponent.gameboard.receiveAttack(y,x);
+            attackRecived = true;
+        }
+    }
+
+    gameloop();
+
+} else {
+    const attackcell = event.target;
+    opponent.gameboard.receiveAttack(attackcell.dataset.y, attackcell.dataset.x);
+    gameloop();
+}
+}
+this.lasthit = {
+result : null,
+cords: null,
+sunk : false
 }
 }
