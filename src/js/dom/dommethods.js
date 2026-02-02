@@ -84,7 +84,8 @@ maprow.classList = "maprow"
     for (let index = 0; index < currentplayer.gameboard.board[i].length; index++) {
         const mapcell = document.createElement("div")
         if (currentplayer.gameboard.board[i][index]) {
-         mapcell.classList = "shippresent"  
+         mapcell.classList = "shippresent" 
+         mapcell.classList.add(`number${currentplayer.gameboard.board[i][index].number}`) 
         } else {
          mapcell.classList = "shipmissing"   
         }

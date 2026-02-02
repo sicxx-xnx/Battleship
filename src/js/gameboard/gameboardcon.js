@@ -45,27 +45,27 @@ this.resetBoard = function(){
 ];
 }
 this.ships = [
-new ship(1),
-new ship(1),
-new ship(1),
-new ship(1),
-new ship(3),
-new ship(3),
-new ship(5),
-new ship(2),
-new ship(2)
+new ship(1,1),
+new ship(1,2),
+new ship(1,3),
+new ship(1,4),
+new ship(3,5),
+new ship(3,6),
+new ship(5,7),
+new ship(2,8),
+new ship(2,9)
 ]
 this.resetShips = function (){
  this.ships = [
-new ship(1),
-new ship(1),
-new ship(1),
-new ship(1),
-new ship(3),
-new ship(3),
-new ship(5),
-new ship(2),
-new ship(2)   
+new ship(1,1),
+new ship(1,2),
+new ship(1,3),
+new ship(1,4),
+new ship(3,5),
+new ship(3,6),
+new ship(5,7),
+new ship(2,8),
+new ship(2,9)   
  ];
  this.placeShips()  
 
